@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void generare_matrice(int M[101][101], int n) //genereaza matricea bordata cu 0 si cu elemente +/-1 in interior. n= nr de linii pr-zise, fara bordare
+void generare_matrice(/*int M[101][101]*/vector<vector<int>> &M, int n) //genereaza matricea bordata cu 0 si cu elemente +/-1 in interior. n= nr de linii pr-zise, fara bordare
 {
 	int i, j, val;
 
@@ -33,7 +33,7 @@ void generare_matrice(int M[101][101], int n) //genereaza matricea bordata cu 0 
 	}
 }
 
-void afisare_matrice(int M[101][101], int n)
+void afisare_matrice(/*int M[101][101]*/vector<vector<int>> &M, int n)
 {
 	int i, j;
 	for (i = 0; i <= n + 1; i++) {
@@ -45,7 +45,7 @@ void afisare_matrice(int M[101][101], int n)
 }
 
 
-double dif_energie(int x1, int y1, int x2, int y2, int M[101][101], double dE) //am incercat sa folosesc o formula pentru diferenta de energie a unui sistem de 2 particule
+double dif_energie(int x1, int y1, int x2, int y2, /*int M[101][101]*/vector<vector<int>> &M, double dE) //am incercat sa folosesc o formula pentru diferenta de energie a unui sistem de 2 particule
 {
 	int S1, S2;
 
@@ -56,7 +56,7 @@ double dif_energie(int x1, int y1, int x2, int y2, int M[101][101], double dE) /
 }
 
 
-void schimba(int x1, int y1, int x2, int y2, int M[101][101], double dE, int& contor) // aceasta functie schimba 2 dipoli
+void schimba(int x1, int y1, int x2, int y2, /*int M[101][101]*/vector<vector<int>> &M, double dE, int& contor) // aceasta functie schimba 2 dipoli
 {
 	if (M[x1][y1] != -M[x2][y2]) //daca dipolii au acceasi valoare iese din program
 		return;
@@ -74,7 +74,7 @@ void schimba(int x1, int y1, int x2, int y2, int M[101][101], double dE, int& co
 }
 
 
-int suma_matrice(int M[101][101], int n) //aceasta functie o folosim pentru a verifica daca dipolul total ramane constant
+int suma_matrice(/*int M[101][101]*/vector<vector<int>> &M, int n) //aceasta functie o folosim pentru a verifica daca dipolul total ramane constant
 {
 	int i, j, suma = 0;
 	for (i = 1; i <= n; i++)
@@ -86,7 +86,7 @@ int suma_matrice(int M[101][101], int n) //aceasta functie o folosim pentru a ve
 
 int main()
 {
-	int M[101][101], n, i, j, contor = 0;
+	int /*M[101][101],*/ n, i, j, contor = 0;
 	double dE, J;
 
 	//cout << "Introdu marimea matricii: ";
@@ -95,6 +95,7 @@ int main()
 	//cin >> J;
 	n = 20;
 	J = 1;
+	vector<vector<int>> M(n+2, vector<int>(n+2, 0));
 
 	generare_matrice(M, n);
 	afisare_matrice(M, n);
