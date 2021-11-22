@@ -95,7 +95,7 @@ int main()
 	//cin >> J;
 	n = 20;
 	J = 1;
-	vector<vector<int>> M(n+2, vector<int>(n+2, 0));
+	vector<vector<int>> M(n+2, vector<int>(n+2, 0)); // o matrice int 2D (n x n) initializata cu 0
 
 	generare_matrice(M, n);
 	afisare_matrice(M, n);
